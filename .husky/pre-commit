@@ -2,4 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # npm test
+# git commit 的时候检查代码，符合eslint规范
 npm run lint
