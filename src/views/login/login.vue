@@ -1,11 +1,13 @@
 <template>
-  <el-button type="primary">登录</el-button>
-  <el-button type="success">注册</el-button>
-  <el-table :data="tableData" border height="250" style="width: 100%">
-    <el-table-column prop="date" label="Date" width="180" />
-    <el-table-column prop="name" label="Name" width="180" />
-    <el-table-column prop="address" label="Address" />
-  </el-table>
+  <div class="login">
+    <el-button type="primary">登录</el-button>
+    <el-button type="success">注册</el-button>
+    <el-table :data="tableData" border height="250" style="width: 100%">
+      <el-table-column prop="date" label="Date" width="180" />
+      <el-table-column prop="name" label="Name" width="180" />
+      <el-table-column prop="address" label="Address" />
+    </el-table>
+  </div>
 </template>
 
 <script lang="ts">
