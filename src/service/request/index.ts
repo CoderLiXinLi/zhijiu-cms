@@ -83,38 +83,6 @@ class ZJRequest {
       }
     )
   }
-  /*
-  request(config: ZJRequestConfig): void {
-    // 3.单个请求对请求config的处理
-    if (config.interceptors?.requestInterceptor) {
-      config = config.interceptors.requestInterceptor(config)
-    }
-
-    // 4.判断是否需要显示loading
-    if (config.showLoading === false) {
-      this.showLoading = config.showLoading
-    }
-
-    this.instance
-      .request(config)
-      .then((res) => {
-        // 3.单个请求对响应response的处理
-        if (config.interceptors?.responseInterceptor) {
-          res = config.interceptors.responseInterceptor(res)
-        }
-
-        // 4.将showLoading设置true, 这样不会影响下一个请求
-        this.showLoading = DEAFULT_LOADING
-
-        console.log(res)
-      })
-      .catch((err) => {
-        // 4.将showLoading设置true, 这样不会影响下一个请求
-        this.showLoading = DEAFULT_LOADING
-        return err
-      })
-  }
-  */
 
   //使用promise返回对应的数据,并使用泛型
   request<T>(config: ZJRequestConfig<T>): Promise<T> {
