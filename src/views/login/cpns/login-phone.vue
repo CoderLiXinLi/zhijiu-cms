@@ -46,28 +46,28 @@ export default defineComponent({
     const getCheckCode = () => {
       if (!isMobile(phone.num)) {
         ElMessage.error('请输入正确手机号')
-      } else {
-        // 倒计时期间按钮不能单击
-        if (checkCodeBtn.duration !== 60) {
-          checkCodeBtn.disabled = true
-        }
-        // 清除掉定时器
-        checkCodeBtn.timer && clearInterval(checkCodeBtn.timer)
-        // 开启定时器
-        checkCodeBtn.timer = setInterval(() => {
-          const tmp = checkCodeBtn.duration--
-          checkCodeBtn.text = `${tmp}秒`
-          if (tmp <= 0) {
-            // 清除掉定时器
-            clearInterval(checkCodeBtn.timer)
-            checkCodeBtn.duration = 10
-            checkCodeBtn.text = '重新获取'
-            // 设置按钮可以单击
-            checkCodeBtn.disabled = false
-          }
-          // console.info(checkCodeBtn.duration)
-        }, 1000)
+        return
       }
+      // 倒计时期间按钮不能单击
+      if (checkCodeBtn.duration !== 60) {
+        checkCodeBtn.disabled = true
+      }
+      // 清除掉定时器
+      checkCodeBtn.timer && clearInterval(checkCodeBtn.timer)
+      // 开启定时器
+      checkCodeBtn.timer = setInterval(() => {
+        const tmp = checkCodeBtn.duration--
+        checkCodeBtn.text = `${tmp}秒`
+        if (tmp <= 0) {
+          // 清除掉定时器
+          clearInterval(checkCodeBtn.timer)
+          checkCodeBtn.duration = 10
+          checkCodeBtn.text = '重新获取'
+          // 设置按钮可以单击
+          checkCodeBtn.disabled = false
+        }
+        // console.info(checkCodeBtn.duration)
+      }, 1000)
     }
 
     const loginAction = () => {

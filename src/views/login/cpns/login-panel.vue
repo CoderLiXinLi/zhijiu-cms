@@ -48,7 +48,7 @@ export default defineComponent({
       console.log('登录')
       console.log(accountRef.value)
       // accountRef.value.loginAction()
-      accountRef.value?.loginAction()
+      accountRef.value?.loginAction(isKeppPassword.value)
       phoneRef.value?.loginAction()
     }
     return {
