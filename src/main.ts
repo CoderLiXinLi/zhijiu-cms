@@ -10,6 +10,8 @@ import store from './store'
 import { globalRegister } from './global'
 // import { registerApp } from './global'
 
+import { setupStore } from '@/store'
+
 const app = createApp(App)
 app.use(router).use(store)
 
@@ -17,5 +19,7 @@ app.use(router).use(store)
 // app.use(ElementPlus)
 // registerApp(app)
 app.use(globalRegister)
+// 同步本地缓存数据到vuex
+setupStore()
 
 app.mount('#app')

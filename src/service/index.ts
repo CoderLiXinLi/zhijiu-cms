@@ -1,6 +1,7 @@
 // service 设置统一出口
 import ZJRequest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
+import LocalCache from '@/utils/cache'
 
 const zjRequest = new ZJRequest({
   baseURL: BASE_URL,
@@ -8,9 +9,9 @@ const zjRequest = new ZJRequest({
   interceptors: {
     requestInterceptor: (config) => {
       // 携带token的拦截
-      const token = ''
+      const token = LocalCache.getCache('token')
       if (token) {
-        const tokenHeader = { Authorization: 'Bearer $(token)', aaa: 'asdfg' }
+        const tokenHeader = { Authorization: 'Bearer ' + token }
         config.headers = tokenHeader
       }
 

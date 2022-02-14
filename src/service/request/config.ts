@@ -18,9 +18,13 @@ const TIME_OUT = 10000
 
 if (process.env.NODE_ENV === 'development') {
   // BASE_URL = 'http://httpbin.org'
-  BASE_URL = 'http://123.207.32.32:8000/'
+  // 这个存在跨域现象,在cli配置好devServer之后,把这个BASE_URL改成/api即可
+  // BASE_URL = 'http://123.207.32.32:8000'
+  BASE_URL = '/api'
+  // 这个是最新的服务地址
+  // BASE_URL = 'http://152.136.185.210:5000'
 } else if (process.env.NODE_ENV === 'production') {
-  BASE_URL = 'http://123.207.32.32:8000/'
+  BASE_URL = 'http://123.207.32.32:8000'
 } else {
   BASE_URL = 'http://coderwhy.org/test'
 }

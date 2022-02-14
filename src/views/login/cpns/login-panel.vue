@@ -1,8 +1,8 @@
 <template>
   <div class="login-panel">
     <h1 class="title">后台管理系统</h1>
-    <el-tabs type="border-card" class="demo-tabs" stretch>
-      <el-tab-pane>
+    <el-tabs type="border-card" class="demo-tabs" stretch v-model="currentTab">
+      <el-tab-pane name="account">
         <template #label>
           <span>
             <el-icon class="login-icon"><avatar /></el-icon>
@@ -11,7 +11,7 @@
         </template>
         <LoginAccount ref="accountRef" />
       </el-tab-pane>
-      <el-tab-pane>
+      <el-tab-pane name="phone">
         <template #label>
           <span>
             <el-icon class="login-icon"><iphone /></el-icon>
@@ -44,18 +44,29 @@ export default defineComponent({
     // const accountRef = ref() 这么写,会没有类型判断
     const accountRef = ref<InstanceType<typeof LoginAccount>>()
     const phoneRef = ref<InstanceType<typeof LoginPhone>>()
+
+    const currentTab = ref<string>('account')
+
     const handleLoginClick = () => {
       console.log('登录')
       console.log(accountRef.value)
       // accountRef.value.loginAction()
-      accountRef.value?.loginAction(isKeppPassword.value)
-      phoneRef.value?.loginAction()
+      // accountRef.value?.loginAction(isKeppPassword.value)
+      // phoneRef.value?.loginAction()
+      if (currentTab.value === 'account') {
+        console.log('账号登录')
+        accountRef.value?.loginAction(isKeppPassword.value)
+      } else {
+        console.log('手机登录')
+        phoneRef.value?.loginAction()
+      }
     }
     return {
       isKeppPassword,
       accountRef,
       handleLoginClick,
-      phoneRef
+      phoneRef,
+      currentTab
     }
   }
 })

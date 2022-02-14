@@ -24,9 +24,12 @@
 import { defineComponent, reactive, ref } from 'vue'
 import { rules, isMobile } from '../config/phone-config'
 import { ElForm, ElMessage } from 'element-plus'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   setup() {
+    const store = useStore()
+
     const phone = reactive({
       num: '',
       code: ''
@@ -75,6 +78,9 @@ export default defineComponent({
         console.log(valid)
         if (valid) {
           console.log('phone真正的登录逻辑')
+          //1. 验证验证码的正确性
+          //2.开始进行登录验证
+          store.dispatch('login/accountPhoneAction', { ...phone })
         }
       })
     }
